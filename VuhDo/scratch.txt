@@ -1,0 +1,59 @@
+- Tooltips, targets, buffs, custom debuffs
+- Skin Manager
+- Icon-statusbars via cooldown-uhr
+- Soul link in BuffWatch
+- Fubar text/icons
+- Nur bestimmte Gruppen, wenn nach klassen/rollen eingeteilt
+- 2 Weapon enchants shammy buffwatch
+- Gruppen in Fenster rechtbündig anordnen wenn Anker rechts
+- Bouquets <, > # stacks bei buffs/debuffs
+
+- Bug: Smart Buff Taste wenn Spieler ausser Reichw.
+- Bug: libDataBroker funktioniert nicht?
+
+
+1. Health     3
+2. Mana       1
+3. Background 5
+4. Aggro      2
+5. Target     -
+6. Incoming   4
+7. Threat     -
+8. Unit/Group highlight
+9. Hot bar 1
+10. Hot bar 2
+11. Hot bar 3
+
+3. Background
+		6. Incoming
+				1. Health
+					4. Aggro
+					5. Mana
+					Highlight
+					Player Target
+
+5. Target
+7. Threat
+
+
+----------
+a) Text
+
+b) Bar size
+c) Bar color/Text color
+d) Incoming size
+e) Aggro bar
+
+f) Raid icon
+g) Background bar
+
+1. Aggro Gain/Loss Text -- a) e)
+2. Range -- c) g)
+3. Incoming Heal +/- -- [a)] c) d)
+4. Alive/Health +/-  -- a) b) c) d)
+5. Rez Start -- c)
+6. Aura -- c) g)
+7. Healthmax -- a) b) c) d)
+8. AFK -- a)
+
+--------------------------

@@ -1,0 +1,305 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Frame name="VuhDoNewOptionsBuffsAppearanceTemplate" virtual="true">
+    <Frames>
+
+      <Frame name="$parentFormatPanel" inherits="VuhDoPanelTemplate">
+        <Size>
+          <AbsDimension x="160" y="170" />
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="280" y="-70" />
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Frames>
+
+          <Frame name="$parentScaleSlider" inherits="VuhDoHSliderTemplate">
+            <Size>
+              <AbsDimension x="128" y="32" />
+            </Size>
+            <Anchors>
+              <Anchor point="TOPLEFT">
+                <Offset>
+                  <AbsDimension x="13" y="-40" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+			      <Scripts>
+			      	<OnLoad>
+			      		VUHDO_lnfSetModel(self, "VUHDO_BUFF_SETTINGS.CONFIG.SCALE");
+						    VUHDO_lnfSliderOnLoad(self, VUHDO_I18N_SCALE, 0.5, 2, "", 0.05);
+					    	VUHDO_lnfSetTooltip(self, VUHDO_I18N_TT_005);
+			      	</OnLoad>
+      			</Scripts>
+          </Frame>
+
+          <Frame name="$parentFormatLabel" inherits="VuhDoLabelFrameTemplate">
+            <Size>
+              <AbsDimension x="110" y="18" />
+            </Size>
+            <Anchors>
+              <Anchor point="TOPLEFT">
+                <Offset>
+                  <AbsDimension x="13" y="-7" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+            <Layers>
+              <Layer>
+                <FontString name="$parentLabel" inherits="VuDoDefaultTitleFontTemplate" text="VUHDO_I18N_FORMAT">
+                </FontString>
+              </Layer>
+            </Layers>
+          </Frame>
+
+          <Frame name="$parentSwatchesPerLineSlider" inherits="VuhDoHSliderTemplate">
+            <Size>
+              <AbsDimension x="128" y="32" />
+            </Size>
+            <Anchors>
+              <Anchor point="TOPLEFT">
+                <Offset>
+                  <AbsDimension x="13" y="-78" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+			      <Scripts>
+			      	<OnLoad>
+			      		VUHDO_lnfSetModel(self, "VUHDO_BUFF_SETTINGS.CONFIG.SWATCH_MAX_ROWS");
+						    VUHDO_lnfSliderOnLoad(self, VUHDO_I18N_MAX_SWATCHES_PER_LINE, 1, 12, "", 1);
+					    	VUHDO_lnfSetTooltip(self, VUHDO_I18N_TT_006);
+			      	</OnLoad>
+      			</Scripts>
+          </Frame>
+
+          <Frame name="$parentBuffsPerColumnSlider" inherits="VuhDoHSliderTemplate">
+            <Size>
+              <AbsDimension x="128" y="32" />
+            </Size>
+            <Anchors>
+              <Anchor point="TOPLEFT">
+                <Offset>
+                  <AbsDimension x="13" y="-116" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+			      <Scripts>
+			      	<OnLoad>
+			      		VUHDO_lnfSetModel(self, "VUHDO_BUFF_SETTINGS.CONFIG.PANEL_MAX_BUFFS");
+						    VUHDO_lnfSliderOnLoad(self, VUHDO_I18N_MAX_BUFFS_PER_ROW, 1, 12, "", 1);
+					    	VUHDO_lnfSetTooltip(self, VUHDO_I18N_TT_007);
+			      	</OnLoad>
+      			</Scripts>
+          </Frame>
+        </Frames>
+      </Frame>
+
+      <Frame name="$parentPallyPowerPanel" inherits="VuhDoPanelTemplate">
+        <Size>
+          <AbsDimension x="160" y="74" />
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="280" y="-260" />
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Frames>
+
+          <CheckButton name="$parentEnableButton" text="VUHDO_I18N_ENABLE" inherits="VuhDoCheckButtonTemplate">
+            <Anchors>
+              <Anchor point="TOPLEFT">
+                <Offset>
+                  <AbsDimension x="13" y="-31" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+			      <Scripts>
+			      	<OnLoad>
+			      		VUHDO_lnfSetModel(self, "VUHDO_CONFIG.IS_PALLY_POWER_COMMS");
+			      		VUHDO_lnfSetTooltip(self, VUHDO_I18N_TT_484);
+			      	</OnLoad>
+					    <OnClick>
+					    	VUHDO_lnfCheckButtonUpdateModel(self);
+					    	VUHDO_lnfCheckButtonClicked(self);
+					    	ReloadUI();
+					    </OnClick>
+      			</Scripts>
+          </CheckButton>
+
+          <Frame name="$parentTitleLabel" inherits="VuhDoLabelFrameTemplate">
+            <Size>
+              <AbsDimension x="75" y="18" />
+            </Size>
+            <Anchors>
+              <Anchor point="TOPLEFT">
+                <Offset>
+                  <AbsDimension x="13" y="-7" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+            <Layers>
+              <Layer>
+                <FontString name="$parentLabel" text="PallyPower Comm" inherits="VuDoDefaultTitleFontTemplate">
+                </FontString>
+              </Layer>
+            </Layers>
+          </Frame>
+        </Frames>
+      </Frame>
+
+      <Frame name="$parentGeneralPanel" inherits="VuhDoPanelTemplate">
+        <Size>
+          <AbsDimension x="158" y="316" />
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="70" y="-52" />
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Frames>
+
+          <Frame name="$parentRefreshSlider" inherits="VuhDoHSliderTemplate">
+            <Size>
+              <AbsDimension x="132" y="32" />
+            </Size>
+            <Anchors>
+              <Anchor point="TOPLEFT">
+                <Offset>
+                  <AbsDimension x="13" y="-276" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+			      <Scripts>
+			      	<OnLoad>
+			      		VUHDO_lnfSetModel(self, "VUHDO_BUFF_SETTINGS.CONFIG.REFRESH_SECS");
+						    VUHDO_lnfSliderOnLoad(self, VUHDO_I18N_REFRESH_RATE, 0.1, 3, " " .. VUHDO_I18N_SECS, 0.1);
+					    	VUHDO_lnfSetTooltip(self, VUHDO_I18N_TT_008);
+			      	</OnLoad>
+      			</Scripts>
+          </Frame>
+
+          <CheckButton name="$parentIgnorePetsCheckButton" text="VUHDO_I18N_IGNORE_PETS" inherits="VuhDoCheckButtonTemplate">
+            <Anchors>
+              <Anchor point="TOPLEFT">
+                <Offset>
+                  <AbsDimension x="28" y="-230" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+			      <Scripts>
+			      	<OnLoad>
+			      		VUHDO_lnfSetModel(self, "VUHDO_BUFF_SETTINGS.CONFIG.IGNORE_PETS");
+			      		VUHDO_lnfSetTooltip(self, VUHDO_I18N_TT_383);
+			      	</OnLoad>
+      			</Scripts>
+          </CheckButton>
+
+          <CheckButton name="$parentHideChargesCheckButton" text="VUHDO_I18N_HIDE_CHARGES" inherits="VuhDoCheckButtonTemplate">
+            <Anchors>
+              <Anchor point="TOPLEFT">
+                <Offset>
+                  <AbsDimension x="28" y="-192" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+			      <Scripts>
+			      	<OnLoad>
+			      		VUHDO_lnfSetModel(self, "VUHDO_BUFF_SETTINGS.CONFIG.HIDE_CHARGES");
+			      		VUHDO_lnfSetTooltip(self, VUHDO_I18N_TT_156);
+			      	</OnLoad>
+      			</Scripts>
+          </CheckButton>
+
+          <CheckButton name="$parentBuffNamesCheckButton" text="VUHDO_I18N_BUFF_NAMES" inherits="VuhDoCheckButtonTemplate">
+            <Anchors>
+              <Anchor point="TOPLEFT">
+                <Offset>
+                  <AbsDimension x="28" y="-154" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+			      <Scripts>
+			      	<OnLoad>
+			      		VUHDO_lnfSetModel(self, "VUHDO_BUFF_SETTINGS.CONFIG.SHOW_LABEL");
+			      		VUHDO_lnfSetTooltip(self, VUHDO_I18N_TT_009);
+			      	</OnLoad>
+      			</Scripts>
+          </CheckButton>
+
+          <CheckButton name="$parentShowEmptyCheckButton" text="VUHDO_I18N_EMPTY_GROUPS" inherits="VuhDoCheckButtonTemplate">
+            <Anchors>
+              <Anchor point="TOPLEFT">
+                <Offset>
+                  <AbsDimension x="28" y="-116" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+			      <Scripts>
+			      	<OnLoad>
+			      		VUHDO_lnfSetModel(self, "VUHDO_BUFF_SETTINGS.CONFIG.SHOW_EMPTY");
+			      		VUHDO_lnfSetTooltip(self, VUHDO_I18N_TT_010);
+			      	</OnLoad>
+      			</Scripts>
+          </CheckButton>
+
+          <CheckButton name="$parentCompactCheckButton" text="VUHDO_I18N_COMPACT" inherits="VuhDoCheckButtonTemplate">
+            <Anchors>
+              <Anchor point="TOPLEFT">
+                <Offset>
+                  <AbsDimension x="28" y="-78" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+			      <Scripts>
+			      	<OnLoad>
+			      		VUHDO_lnfSetModel(self, "VUHDO_BUFF_SETTINGS.CONFIG.COMPACT");
+			      		VUHDO_lnfSetTooltip(self, VUHDO_I18N_TT_458);
+			      	</OnLoad>
+      			</Scripts>
+          </CheckButton>
+
+          <CheckButton name="$parentShowCheckButton" text="VUHDO_I18N_ENABLE" inherits="VuhDoCheckButtonTemplate">
+            <Anchors>
+              <Anchor point="TOPLEFT">
+                <Offset>
+                  <AbsDimension x="28" y="-40" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+			      <Scripts>
+			      	<OnLoad>
+			      		VUHDO_lnfSetModel(self, "VUHDO_BUFF_SETTINGS.CONFIG.SHOW");
+			      		VUHDO_lnfSetTooltip(self, VUHDO_I18N_TT_011);
+			      	</OnLoad>
+      			</Scripts>
+          </CheckButton>
+
+          <Frame name="$parentGeneralLabel" inherits="VuhDoLabelFrameTemplate">
+            <Size>
+              <AbsDimension x="110" y="18" />
+            </Size>
+            <Anchors>
+              <Anchor point="TOPLEFT">
+                <Offset>
+                  <AbsDimension x="13" y="-7" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+            <Layers>
+              <Layer>
+                <FontString name="$parentLabel" text="VUHDO_I18N_GENERAL_SHORT" inherits="VuDoDefaultTitleFontTemplate">
+                </FontString>
+              </Layer>
+            </Layers>
+          </Frame>
+        </Frames>
+      </Frame>
+    </Frames>
+  </Frame>
+</Ui>

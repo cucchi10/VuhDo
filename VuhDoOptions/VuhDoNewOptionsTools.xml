@@ -1,0 +1,105 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <Script file="VuhDoNewOptionsTools.lua" />
+
+  <Frame name="VuhDoNewOptionsToolsTemplate" virtual="true">
+    <Frames>
+      <Frame name="$parentRadioPanel">
+        <Size>
+          <AbsDimension x="115" y="231" />
+        </Size>
+        <Anchors>
+          <Anchor point="TOPRIGHT" relativePoint="TOPRIGHT">
+            <Offset>
+              <AbsDimension x="0" y="-10" />
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Frames>
+
+          <CheckButton name="$parentProfilesRadioButton" checked="true" text="VUHDO_I18N_PROFILES" inherits="VuhDoRadioButtonTemplate">
+            <Anchors>
+              <Anchor point="TOPLEFT">
+                <Offset>
+                  <AbsDimension x="3" y="-3" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+						<Scripts>
+					    <OnClick>
+					    	VUHDO_newOptionsToolsSkinsClicked(self);
+					    	VUHDO_lnfRadioButtonClicked(self);
+					    </OnClick>
+					    <OnLoad>
+					    	VUHDO_lnfCheckButtonOnLoad(self);
+					    	VUHDO_lnfSetTooltip(self, VUHDO_I18N_TT_164);
+					    </OnLoad>
+  					</Scripts>
+          </CheckButton>
+
+          <CheckButton name="$parentWizardRadioButton" text="VUHDO_I18N_PANEL_WIZARD" inherits="VuhDoRadioButtonTemplate">
+            <Anchors>
+              <Anchor point="TOPLEFT">
+                <Offset>
+                  <AbsDimension x="3" y="-41" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+						<Scripts>
+					    <OnClick>
+					    	VUHDO_newOptionsToolsWizardClicked(self);
+					    	VUHDO_lnfRadioButtonClicked(self);
+					    </OnClick>
+					    <OnLoad>
+					    	VUHDO_lnfCheckButtonOnLoad(self);
+					    	VUHDO_lnfSetTooltip(self, VUHDO_I18N_TT_265);
+					    </OnLoad>
+  					</Scripts>
+          </CheckButton>
+
+          <CheckButton name="$parentReset" text="VUHDO_I18N_RESET" inherits="VuhDoRadioButtonTemplate">
+            <Anchors>
+              <Anchor point="TOPLEFT">
+                <Offset>
+                  <AbsDimension x="3" y="-79" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+						<Scripts>
+					    <OnClick>
+					    	VUHDO_newOptionsToolsResetClicked(self);
+					    	VUHDO_lnfRadioButtonClicked(self);
+					    </OnClick>
+					    <OnLoad>
+					    	VUHDO_lnfCheckButtonOnLoad(self);
+					    	VUHDO_lnfSetTooltip(self, VUHDO_I18N_TT_477);
+					    </OnLoad>
+  					</Scripts>
+          </CheckButton>
+
+        </Frames>
+      </Frame>
+
+      <Frame name="$parentContentPanel">
+        <Size>
+          <AbsDimension x="428" y="345" />
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="0" y="0" />
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Frames>
+        	<Frame name="VuhDoNewOptionsToolsSkins" setAllPoints="true" inherits="VuhDoNewOptionsToolsSkinsTemplate">
+        	</Frame>
+        	<Frame name="VuhDoNewOptionsToolsWizard" hidden="true" setAllPoints="true" inherits="VuhDoNewOptionsToolsWizardTemplate">
+        	</Frame>
+        	<Frame name="VuhDoNewOptionsToolsReset" hidden="true" setAllPoints="true" inherits="VuhDoNewOptionsToolsResetTemplate">
+        	</Frame>
+        </Frames>
+      </Frame>
+    </Frames>
+  </Frame>
+</Ui>

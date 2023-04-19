@@ -1,0 +1,1098 @@
+since Version 2.22 (to 2.23):
+
+Bugfixes:
+-- Minor bugfixes
+
+Improvements:
+
+
+Changes:
+
+
+Features:
+
+
+--------------------------------------------------------------
+since Version 2.21 (to 2.22):
+
+Bugfixes:
+-- Fixed frame strata (dim bars)
+
+Improvements:
+
+
+Changes:
+
+
+Features:
+
+
+--------------------------------------------------------------
+since Version 2.20 (to 2.21):
+
+Bugfixes:
+-- Fixed refresh rate for d/c shield
+-- Adjusted some frame strata (hots, custom debuffs now on top of text)
+-- Minor bugfixes
+
+
+Improvements:
+
+
+Changes:
+
+
+Features:
+
+
+--------------------------------------------------------------
+since Version 2.19 (to 2.20):
+
+Bugfixes:
+-- Fixed range checking for mind controlled units
+-- Added Cyclone to buff removal spells so it can be cast on
+   mind controlled units
+-- Blizz standard player/party frames enablement will be loaded
+   from profiles correctly now
+-- Minor bugfixes
+
+
+Improvements:
+-- Performance optimizations
+-- Some code cleanup
+-- Minor improvements
+
+
+Changes:
+-- Map dimensions will not be persisted anymore to avoid
+   to avoid permanent inacuracies
+-- "Assistants" are no longer part of default panel setup.
+   (=> You may of course add them if you like in options=>move)
+
+
+Features:
+-- Added 2 new HoT positions (Options=>panels=>hot icons)
+
+
+--------------------------------------------------------------
+since Version 2.18 (to 2.19):
+
+Bugfixes:
+-- Some bugfixes
+
+
+Improvements:
+
+
+Changes:
+
+
+Features:
+-- Added feature to cancel spellcast currently in progress and
+   start a new cast on repeated click.
+   (Options=>spells=>misc)
+
+--------------------------------------------------------------
+since Version 2.17 (to 2.18):
+
+Bugfixes:
+-- Filters will also work for loose panel setup
+-- Fixed some minor quirks in options screens
+-- Minor bugfixes and improvements
+
+
+Improvements:
+-- Performance optimizations
+-- Reduced inner border frame strata
+-- Trottled map request queries in cluster builder
+   to reduce conflicts with map addons (could have causes stutter
+   and/or lags)
+
+
+
+Changes:
+
+
+
+Features:
+-- Added slider for adjusting direction arrow scale
+-- Added options for exporting custom debuffs to profile(s)
+   (Options=>Tools=>Profiles)
+-- Improved mid-fight log in raid panel restoration
+   (disable in options=>general=>misc)
+
+--------------------------------------------------------------
+since Version 2.16 (to 2.17):
+
+Bugfixes:
+-- Fixed a bug with HoT positioning in rare cases
+-- Fixed a bug with not updating custom debuff indication
+   after loading a profile
+-- Fixed a bug with initializing direction arrow font
+
+
+Improvements:
+-- Performance optimizations
+-- Reduced server talent tree queries by involving
+   dungeon finder assigned roles for tanks and heal.
+-- Minor bugfixes and improvements
+
+
+
+Changes:
+
+
+Features:
+
+
+--------------------------------------------------------------
+since Version 2.15 (to 2.16):
+
+Bugfixes:
+-- Fixed a bug with mouseover highlight bar orientation
+
+
+Improvements:
+-- Performance optimizations
+
+
+Changes:
+
+
+Features:
+-- Added features for displaying direction of ppl out of range
+   (Options=>General=>Scanners)
+
+
+--------------------------------------------------------------
+since Version 2.14 (to 2.15):
+
+Bugfixes:
+-- Fixed a glitch with trying to call prohibited functions mid-fight
+-- Fixed a bug with raid icon bar coloring
+
+Improvements:
+-- Performance optimizations
+
+
+Changes:
+
+
+Features:
+
+
+--------------------------------------------------------------
+since Version 2.13 (to 2.14):
+
+Bugfixes:
+-- Fixed some radio button display issues in
+   options=>panels=>misc
+-- Fixed a bug where smart cast resurrection wouldn't work
+   if an explicit range checking spell was selected in
+   options=>general=>scanners
+-- Fixed a bug where custom debuff icons haven't been removed properly
+
+
+Improvements:
+-- Cleaned up profile options some
+
+
+Changes:
+
+
+Features:
+-- Added feature to lock profiles to not overwrite them accidentally
+   (Options=>Tools=>Profiles)
+
+
+--------------------------------------------------------------
+since Version 2.12 (to 2.13):
+
+Bugfixes:
+-- Fixed minor flaw with updating target's target and focus target
+-- Attempt to fix a bar positioning bug
+-- Fixed a bug (lua error) with updating hots after a player left vehicle
+-- Fixed a bug with power bars showing when growth direction inverted
+
+
+Improvements:
+-- Added Pain Suppression to priest buff watch
+-- Performance optimizations
+
+Changes:
+-- Updated libHealComm
+
+Features:
+-- Added bouquet items for class,role and raid target icons
+-- Bar orientation (growth, horizontal<->vertical, turn axis)
+   is now part of indicator concept. It has been moved from
+   options=>panels=>bars to options=>general=>indicators
+   "more" button (health, mana, threat bars) so it can be
+   configured per bar. YOU WILL NEED TO OVERWRITE saved profiles
+   again.
+-- Added support for libDataBroker
+
+--------------------------------------------------------------
+since Version 2.11 (to 2.12):
+
+Bugfixes:
+-- Fixed a bug when pet with same name as a player in raid
+-- Fixed a bug where cluster scanning wouldn't work when
+   no mouseover bouquet was selected
+
+Improvements:
+-- Performance optimizations
+
+Changes:
+
+Features:
+
+
+--------------------------------------------------------------
+since Version 2.10 (to 2.11):
+
+Bugfixes:
+-- Fixed a bug that could occur when loading a profile from
+   another toon.
+-- Fixed a bug where ppl haven't been removed from raid roster
+   sometimes
+-- Fixed a bug with button positioning
+-- Fixed a bug where cluster scanner didn't work if cluster only
+   shown via bouquet
+
+
+Improvements:
+-- Auto-firing of trinkets/instants will also work for target/focus bars now
+-- Performance optimizations
+
+Changes:
+
+Features:
+
+
+--------------------------------------------------------------
+since Version 2.8 (to 2.9/10):
+
+Bugfixes:
+-- Filter settings will no longer have effect on BuffWatch blessings.
+-- Changed the way same zone detection works to prevent hot icons from
+   sometimes disappearing
+-- Fixed a bug with single target unique buff target selection
+-- Fixed a bug VuhDoLookAndFeel.lua:532: attempt to index upvalue 'tLastField' (a nil value)
+-- Some minor bugfixes / Improvements
+
+Improvements:
+-- Made some resources localizable
+-- Added some german translations
+-- Incoming heals will be shown for inverted bar correctly
+-- Performance optimizations
+
+Changes:
+-- Cluster setup will only load from profiles if saved from same class
+-- Smart cast resurrection is on now by default
+-- options=>panels=>bars, "vertical", "turn axis" and "invert growth"
+   is no longer per panel but for all panels. May need to set up again
+-- If "invert growth" is selected mana bars will be inverted as well
+
+Features:
+-- Added cooldown reference spell to cluster scanner. Clusters will only
+   show if that spell has no cooldown. (e.g. Circle of Healing)
+   (Options=>General=>Clusters)
+-- Added optional player target to private tanks panel
+   (disable in options=>general=>general, Filter "Target")
+-- Added options to leave out overwrite/copy/discard user dialog when saving
+   profiles and assume "overwrite". (Options=>General=>Profiles "Quiet Mode")
+-- Added optional display of new custom debuff names for 2 seconds for
+   better orientation (Enable in options=>debuffs=>custom, "Debuff Name")
+
+
+--------------------------------------------------------------
+since Version 2.7 (to 2.8):
+
+Bugfixes:
+-- Fixed a bug with vehicle names not showing properly
+-- Fixed a bug with vehicle/pet target display
+-- Attempt to fix a rare bug on login (showing grey bars)
+-- Fixed two bugs in cluster scanner
+-- Fixed a bug where multiple players were tagged as "pet"
+-- Minor bugfixes and improvements
+
+Improvements:
+-- Performance optimizations
+
+Changes:
+
+Features:
+
+
+--------------------------------------------------------------
+since Version 2.6 (to 2.7):
+
+Bugfixes:
+-- Fixed a bug where sometimes a player could appear twice in panel
+-- Minor Bugfixes
+
+Improvements:
+-- Performance optimizations
+
+Changes:
+
+Features:
+-- Added limited PallyPower support (passive: Auras, Blessings)
+   => Options=>Buffs=>General
+   This is experimental and will not cover all features of PP
+   What it does so far: It will adopt changes of aura and blessing
+   setup to BuffWatch made for your toon via PallyPower. It will
+   update PP config if you changed your aura/blessings via BuffWatch
+
+
+--------------------------------------------------------------
+since Version 2.5 (to 2.6):
+
+Bugfixes:
+-- Fixed a bug \VuhDoPanel.lua:295: invalid order function for sorting
+
+Improvements:
+-- Performance optimizations
+
+Changes:
+
+Features:
+
+
+--------------------------------------------------------------
+since Version 2.4 (to 2.5):
+
+Bugfixes:
+-- Fixed a hot icon fading bug
+
+Improvements:
+-- Identifiying player by "player" instead of raid-id, to
+  prevent from disappearing in combat when raid roster changing
+
+Changes:
+
+Features:
+
+
+--------------------------------------------------------------
+since Version 2.3 (to 2.4):
+
+Bugfixes:
+-- Fixed a rare problem with some vehicles (ToC)
+-- Fixed a bug with "Other player's HoT not showing properly
+-- Fixed a bug with losing unit coherence in some situations
+
+Improvements:
+
+Changes:
+
+Features:
+
+
+--------------------------------------------------------------
+since Version 2.2 (to 2.3):
+
+Bugfixes:
+-- Fixed a bug with charmed players detection
+-- Fixed/improved an issue with players joining/leaving mid-fight
+-- Fixed a bug that may lead to show incoming health bars 100% opaque
+
+Improvements:
+-- Performance optimizations
+-- Minor russian translation update
+-- Gradient color in status bar bouquet items will use opacity
+-- HoT charge colors will use opacity
+
+Changes:
+-- Removed error message "You are buffing too fast"
+
+Features:
+
+
+--------------------------------------------------------------
+since Version 2.1 (to 2.2):
+
+Bugfixes:
+-- Fixed a bug with target and target-of-target mana bars
+
+Improvements:
+-- Big update of russian translation (Thank you so much "StingerSoft")
+
+Changes:
+
+Features:
+
+
+--------------------------------------------------------------
+since Version 2.0 (to 2.1):
+
+Bugfixes:
+-- Fixed a bug with hot stacks text coloring
+
+Improvements:
+
+Changes:
+-- Solid panel color swatch moved to options=>colors=>modes
+
+Features:
+-- Mana bar sizes work on a per panel basis again (Options=>Panels=>Bars)
+-- Text class colors can be applied in emergency modes
+-- Health bars can be customized per-panel again (options=>panels=>bars)
+-- There are three generic health bar bouquet now instead of one
+   (For gradient, solid and class colors)
+
+
+--------------------------------------------------------------
+since Version 2.0 beta #13 (to 2.0):
+
+Bugfixes:
+
+Improvements:
+-- Smart cast buff will follow the rules setup in
+   options=>spells=rebuff for right-click (instead of always raid variant)
+   (left click remains to cast always single target variant)
+
+Changes:
+
+Features:
+-- Added HoT text font and font size selection in options=>panels=>hots
+
+--------------------------------------------------------------
+since Version 2.0 beta #12 (to 2.0 beta #13):
+
+Bugfixes:
+-- Improved "charmed" detection
+
+Improvements:
+-- Minor performance optimizations
+
+Changes:
+-- Upated libShieldLeft
+
+Features:
+
+--------------------------------------------------------------
+since Version 2.0 beta #11 (to 2.0 beta #12):
+
+Bugfixes:
+-- HoT icon size 0 will now not show timers/counters anymore
+-- Tooltips and mouseover work in Clique compatibility mode as well
+-- Fixed a bug where player charmed status was delayed
+
+Improvements:
+-- Greatly increased performance of buff checking
+
+Changes:
+-- Smart cast "Battle Rez" will only trigger on selected modifier key
+   in options=>spells=>smart cast
+
+Features:
+
+--------------------------------------------------------------
+since Version 2.0 beta #10 (to 2.0 beta #11):
+
+Bugfixes:
+-- Fixed some pet/vehicle issues
+
+Improvements:
+-- Performance upgrade
+-- Changed default texture for mouseover bouquet
+
+Changes:
+
+Features:
+
+--------------------------------------------------------------
+since Version 2.0 beta #9 (to 2.0 beta #10):
+
+Bugfixes:
+-- Better "unknown" detection if newly grouped
+-- Minor bugfixes
+
+Improvements:
+
+Changes:
+
+Features:
+
+--------------------------------------------------------------
+since Version 2.0 beta #8 (to 2.0 beta #9):
+
+Bugfixes:
+-- Bugfixes for certain HoT positions
+
+Improvements:
+
+Changes:
+
+Features:
+
+--------------------------------------------------------------
+since Version 2.0 beta #7 (to 2.0 beta #8):
+
+Bugfixes:
+-- Minor bugfixes
+
+Improvements:
+
+Changes:
+
+Features:
+
+--------------------------------------------------------------
+since Version 2.0 beta #6 (to 2.0 beta #7):
+
+Bugfixes:
+-- Fixed a bug with debuff recognition
+-- Fixed a bug with loading/saving profiles
+-- Fixed a bug with vehicle targeting
+
+Improvements:
+-- Performance optimizations
+
+Changes:
+
+Features:
+
+--------------------------------------------------------------
+since Version 2.0 beta #5 (to 2.0 beta #6):
+
+Bugfixes:
+-- Fixed a minor bug where hots are showing # stacks of 1
+-- Fixed a bug with options scale slider causing an error
+
+Improvements:
+-- Made name texts UTF-8 aware (no more "?" if delimiting
+   name text length in options=>panels=>text, and special
+   characters in players' names)
+
+Changes:
+- HoT icon size is a per-panel setting again.
+
+Features:
+
+--------------------------------------------------------------
+since Version 2.0 beta #4 (to 2.0 beta #5):
+
+Bugfixes:
+-- Fixed a bug where bouquets weren't updated correctly for offline players
+-- Fixed a bug where special-dot indicator wasn't removed on raid roster changes
+-- Fixed a rare bug where ready check icons were showing after login
+-- Fixed a bug where resurrection was anounced after player released spirit
+-- Fixed a bug where hot bars were increasing button spacing
+
+
+Improvements:
+-- Added Bouquet Item "Color: #Stacks" to allow indicator coloring by number of stacks
+-- Performance optimizations
+
+Changes:
+-- Mana color will be taken from options=>colors=>powers instead of the bouquet
+   to make it more consistent to other types of power. Removed color component
+   of "statusbar: mana" accordingly
+
+Features:
+-- Added scale slider for options screens
+
+--------------------------------------------------------------
+since Version 2.0 beta #3 (to 2.0 beta #4):
+
+Bugfixes:
+-- Fixed a bug where Header wouldn't stick if width set to 0
+-- Fixed a bug where focus manabars remained when focus cleared
+-- Fixed a bug where range checker occasionally resetted to "guess"
+-- Fixed a background discoloration bug for players going offline
+-- Fixed a bug where profiles/spell assignments didn't auto-load
+   when in a raid
+-- Fixed a bug where the "d/c" tag in player named wasn't updated
+
+
+Improvements:
+-- Role detection for death knights via "frost presence"
+
+Changes:
+
+Features:
+
+--------------------------------------------------------------
+since Version 2.0 beta #2 (to 2.0 beta #3):
+
+Bugfixes:
+-- Fixed a health bar color problem
+-- Fixed some minor issues
+
+Improvements:
+
+Changes:
+
+Features:
+
+--------------------------------------------------------------
+since Version 2.0 beta #1 (to 2.0 beta #2):
+
+Bugfixes:
+-- Fixed a bug ..\AddOns\VuhDo\VuhDoMacroFactory.lua line 368:
+bad argument #3 to 'gsub' (string/function/table expected)
+
+Improvements:
+
+Changes:
+
+Features:
+
+--------------------------------------------------------------
+since Version 2.0 alpha #25 (to 2.0 alpha #26):
+
+Bugfixes:
+-- Minor Bugfixes
+-- Attempt to fix bugs where mouseover event sticked sometimes.
+
+
+Improvements:
+-- Performance optimizations
+
+Changes:
+
+Features:
+
+--------------------------------------------------------------
+since Version 2.0 alpha #24 (to 2.0 alpha #25):
+
+Bugfixes:
+-- Fixed buff panel redraw issue after profile change
+-- Fixed buff enablement not correctly loaded from profiles
+   (You may have to overwrite existing profiles)
+-- Fixed a bug targeting vehicles
+-- Fixed a bug where wrong player target shown when player in vehicle
+-- Fixed a bug with shaman totems not showing correctly in buffwatch
+
+
+Improvements:
+-- Updated libHealComm
+
+Changes:
+
+Features:
+
+--------------------------------------------------------------
+since Version 2.0 alpha #23 (to 2.0 alpha #24):
+
+Bugfixes:
+-- bugfixes (Vehicles)
+
+Improvements:
+-- Performance optimizations
+
+Changes:
+
+Features:
+
+--------------------------------------------------------------
+since Version 2.0 alpha #21 (to 2.0 beta #1):
+
+Bugfixes:
+-- Minor bugfixes
+
+Improvements:
+-- Performance optimizations
+-- Added some german translations
+
+Changes:
+
+Features:
+
+--------------------------------------------------------------
+since Version 2.0 alpha #21 (to 2.0 alpha #22):
+
+Bugfixes:
+-- Several bugfixes
+
+Improvements:
+
+Changes:
+
+Features:
+
+--------------------------------------------------------------
+since Version 2.0 alpha #20 (to 2.0 alpha #21):
+
+Bugfixes:
+-- Several bugfixes
+
+Improvements:
+-- Performance optimizations
+-- Many little improvements in options/handling (thanks venoman)
+
+Changes:
+-- Adjusted some bouquet flags
+
+Features:
+-- Added Options=>Tools=>Reset to partially or fully reset settings
+   zo default values.
+
+--------------------------------------------------------------
+since Version 2.0 alpha #19 (to 2.0 alpha #20):
+
+Bugfixes:
+-- Several bugfixes
+
+Improvements:
+-- Performance optimizations
+
+Changes:
+
+Features:
+
+--------------------------------------------------------------
+since Version 2.0 alpha #18 (to 2.0 alpha #19):
+
+Bugfixes:
+-- several bugfixes
+
+Improvements:
+-- Performance optimizations
+
+Changes:
+
+Features:
+
+--------------------------------------------------------------
+since Version 2.0 alpha #17 (to 2.0 alpha #18):
+
+Bugfixes:
+-- several bugfixes
+
+Improvements:
+-- Performance optimizations
+-- Debuff schools can be monitored separately
+
+Changes:
+
+Features:
+-- Clique addon support
+   (options=>general=>misc)
+
+--------------------------------------------------------------
+since Version 2.0 alpha #16 (to 2.0 alpha #17):
+
+Bugfixes:
+-- several bugfixes
+
+Improvements:
+-- Performance / memory optimizations
+-- Improved behaviour on mid-fight raid roster changes
+
+Changes:
+-- Made Options=>General=>Bouquets a little more intuitive (i hope)
+
+Features:
+
+--------------------------------------------------------------
+since Version 2.0 alpha #15 (to 2.0 alpha #16):
+
+Bugfixes:
+-- Minor bugfixes
+
+Improvements:
+-- (Noticeable) Performance / memory optimizations
+
+Changes:
+-- HoT setup will no longer be stored panel-wise but all
+   there's one setup for all panels now. This allows major
+   reduction of CPU and memory usage.
+
+Features:
+-- You can now select custom bar textures for most bars
+   (Options=>General=>Indicators)
+
+--------------------------------------------------------------
+since Version 2.0 alpha #14 (to 2.0 alpha #15):
+
+Bugfixes:
+-- Minor Bugfixes
+
+Improvements:
+-- Raid demo users will also show in tabs "Colors" and "General"
+
+Changes:
+-- Auto-generated health bar bouquet can no longer be edited
+   to prevent lua errors.
+   (create a custom copy instead)
+
+Features:
+
+--------------------------------------------------------------
+since Version 2.0 alpha #13 (to 2.0 alpha #14):
+
+Bugfixes:
+-- Bugfixes
+
+Improvements:
+
+
+Changes:
+
+Features:
+
+--------------------------------------------------------------
+since Version 2.0 alpha #12 (to 2.0 alpha #13):
+
+Bugfixes:
+-- Bugfixes
+
+Improvements:
+-- Performance optimizations
+
+Changes:
+
+Features:
+
+--------------------------------------------------------------
+since Version 2.0 alpha #11 (to 2.0 alpha #12):
+
+Bugfixes:
+-- Fixed several bugs about indicators/bouquets
+   (Vehicle switching, ghosting bars, etc.)
+
+Improvements:
+-- Performance, memory optimizations
+
+Changes:
+
+Features:
+
+--------------------------------------------------------------
+since Version 2.0 alpha #10 (to 2.0 alpha #11):
+
+Bugfixes:
+-- Some more bugfixes
+
+Improvements:
+-- Some more performance optimizations
+
+Changes:
+
+Features:
+-- You can now use the health bar for bouquet indicators.
+   To do this go to options=>general=>Indicators and select
+   bouquet "Health Bars: (auto)", which is an auto-generated
+   bouquet based on your current settings (for panel #1).
+   If you set health bar bouquet to "--None/empty--" health
+   bars will be drawn the old fashioned way (in case you
+   encounter any problems). "Health Bars: (auto)" will be
+   recreated each time you press "Okay" in options.
+   Note:
+   - It makes no sense to modify this bouquet, because it
+   will be overwritten next time you press okay.
+   - If you want a custom bouquet for health bars click on
+   "edit" or select the auto-bouquet in options=>general=>bouquets,
+   type in a new name and click on "copy". Select the custom
+   bouquet for health bars in options=>general=>indicators after.
+
+-- Added an options for general scan range limitation
+   (Options=>General=>Scanner)
+
+--------------------------------------------------------------
+since Version 2.0 alpha #9 (to 2.0 alpha #10):
+
+Bugfixes:
+-- Some bugfixes
+
+Improvements:
+
+Changes:
+
+Features:
+
+--------------------------------------------------------------
+since Version 2.0 alpha #8 (to 2.0 alpha #9):
+
+Bugfixes:
+-- Some bugfixes
+	 (boolean values not saved to profiles sometimes => Setup profiles again and overwrite)
+-- Mana bars not disappearing after power type changes to non-mana
+
+Improvements:
+-- Better integration of HoT bars to bouquets
+-- Reworked spell layout load/save options some
+-- Some performance optimizations
+
+Changes:
+
+Features:
+-- Added indicator/default bouquets for background bar
+
+--------------------------------------------------------------
+since Version 2.0 alpha #7 (to 2.0 alpha #8):
+
+Bugfixes:
+-- Fixed some bugs
+-- Fixed a rare race condition on load
+
+Improvements:
+-- Performance optimizations
+-- Spell Layout and profile names will be sorted alphabetically
+
+Changes:
+
+Features:
+
+--------------------------------------------------------------
+since Version 2.0 alpha #6 (to 2.0 alpha #7):
+
+Bugfixes:
+-- Fixed some bugs
+
+Improvements:
+- Performance optimizations
+
+Changes:
+- BuffWatch will only scan ppl in the same zone as  the player (PvE)
+  ... only scan visible people (<= 100 yards) (PvP)
+
+Features:
+
+--------------------------------------------------------------
+since Version 2.0 alpha #5 (to 2.0 alpha #6):
+
+Bugfixes:
+-- Some bugfixes
+
+Improvements:
+- Performance optimizations
+
+Changes:
+
+Features:
+
+--------------------------------------------------------------
+since Version 2.0 alpha #4 (to 2.0 alpha #5):
+
+Bugfixes:
+-- Fixed a couple of bugs
+
+Improvements:
+-- Performance optimization
+
+Changes:
+
+Features:
+-- Added option to turn off talent tree scanner
+   (Options=>General=>Scanners)
+
+--------------------------------------------------------------
+since Version 2.0 alpha #3 (to 2.0 alpha #4):
+
+Bugfixes:
+-- Fixed a couple of bugs
+
+Improvements:
+-- Performance boost
+
+Changes:
+
+Features:
+
+--------------------------------------------------------------
+since Version 2.0 alpha #2 (to 2.0 alpha #3):
+
+Bugfixes:
+-- Fixed a couple of bugs
+
+Improvements:
+-- Performance optimizations
+
+Changes:
+
+Features:
+
+--------------------------------------------------------------
+since Version 2.0 alpha #1 (to 2.0 alpha #2):
+
+Bugfixes:
+-- Fixed a couple of bugs
+
+Improvements:
+-- Performance optimizations
+
+Changes:
+
+Features:
+
+--------------------------------------------------------------
+
+since Version 1.251 (to 2.0):
+
+Bugfixes:
+-- Fixed minor bug with background bar colors on some configurations
+-- When opening options screens auto-hiding solo/party will be disabled
+-- Fixed a bug with BuffWatch cast blessings on wrong units if no target available
+-- Fixed a bug where config panels were messed up in options=>move when
+   using horizontal arrangements
+-- Fixed wow 3.3.3 statusbar texture scaling bug
+
+Improvements:
+-- Added some missing tooltips, localizations and german translations
+-- Performance optimizations
+-- Debuff stack text for "1" stack will be hidden
+-- a lot of improvements in options screens
+-- Removed a lot of options, that are not needed anymore (see: new feature "Bouquets")
+-- Some options are now enabled/disabled (Aggro,Range,Cluster scanner etc.) automatically
+   if there are display elements that use it. The options for these elements have been
+   removed.
+-- VuhDo will scale better with feature enablement
+-- Updated libHealComm to  1.6.2
+-- Options=>General=>General, "Filter" for MTs, Private Tanks and Assistants will only
+   filter units from the main panel if these groups exist respectively.
+-- Updated chinese localization (Thank you Liu)
+
+Changes:
+-- Trinket firing is now off in default configuration: There have been too many
+   trinkets blocking casts mid-fight. You can still enable it in options=>spells=>misc
+-- Macros for hostile targets will only be used if macro is in hostile slot
+-- Former Options=>General=>Debuffs (Standard+Custom) moved to an own tab "Debuffs"
+-- Former Options=>General=>Skins/Wizard moved to an own tab "Tools"
+
+Features:
+-- Changed application layout for use of "Indicators" with "Bouquets".
+   A bouquet is a list of...
+
+   a) buffs/debuffs/hots
+   ...and/or...
+   b) special events (target, mouse-over, aggro, range etc.)
+
+   ...ordered by custom priority.
+   (Options=>General=>Bouquets)
+
+   Bouquets can be used on "Indicators", such as borders and bars.
+   (Options=>General=>Indicators) as well as well as on
+   HoT slots (Options=>Panels=>HoT Icons).
+
+   Bouquets allow for maximum customization of almost every screen element.
+   Concept of Bouquets/Indicators are major change in application layout
+   so you may need to reconfigure some elements to look same as previous
+   version.
+
+-- Added options for changing Profiles on spec change
+   (Options=>Tools=>Skins, check "Spec 1/2"
+-- Added a "Compact Mode" for BuffWatch
+   (Options=>Buffs=>General, "Compact")
+-- Added option for showing the name off custom debuffs for 3.5 secs after it
+   occurs instead of life text. (To make it easier identifying custom debuffs)
+-- Added option for turn bar axis (Options=>Panels=>Bars)
+
+--------------------------------------------------------------
+since Version 1.250 (to 1.251):
+
+Bugfixes:
+-- Fixed a bug with hostile spells when no friendly spell was selected
+-- BuffWatch will no longer try to change buffs/filters via right-click
+   mid-fight
+
+Improvements:
+-- Added some hunter's buffs to BuffWatch
+
+Changes:
+
+Features:

@@ -1,0 +1,386 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Frame name="VuhDoNewOptionsGeneralIncomingTemplate" virtual="true">
+    <Frames>
+      <Frame name="$parentIncomingPanel" inherits="VuhDoPanelTemplate">
+        <Size>
+          <AbsDimension x="244" y="112" />
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="20" y="-26" />
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Frames>
+
+          <CheckButton name="$parentOwnCheckButton" text="VUHDO_I18N_SHOW_OWN_HEAL" inherits="VuhDoCheckButtonTemplate">
+            <Anchors>
+              <Anchor point="TOPLEFT">
+                <Offset>
+                  <AbsDimension x="13" y="-31" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+			      <Scripts>
+			      	<OnLoad>
+			      		VUHDO_lnfSetModel(self, "VUHDO_CONFIG.SHOW_OWN_INCOMING");
+			      		VUHDO_lnfSetTooltip(self, VUHDO_I18N_TT_063);
+			      	</OnLoad>
+      			</Scripts>
+          </CheckButton>
+
+          <CheckButton name="$parentShowCheckButton" text="VUHDO_I18N_OTHERS" inherits="VuhDoCheckButtonTemplate">
+            <Anchors>
+              <Anchor point="TOPLEFT">
+                <Offset>
+                  <AbsDimension x="13" y="-69" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+			      <Scripts>
+			      	<OnLoad>
+			      		VUHDO_lnfSetModel(self, "VUHDO_CONFIG.SHOW_INCOMING");
+			      		VUHDO_lnfSetTooltip(self, VUHDO_I18N_TT_216);
+			      	</OnLoad>
+      			</Scripts>
+          </CheckButton>
+
+          <CheckButton name="$parentLifeTextCheckButton" text="VUHDO_I18N_LIFE_TEXT" inherits="VuhDoCheckButtonTemplate">
+            <Anchors>
+              <Anchor point="TOPLEFT">
+                <Offset>
+                  <AbsDimension x="133" y="-31" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+			      <Scripts>
+			      	<OnLoad>
+			      		VUHDO_lnfSetModel(self, "VUHDO_CONFIG.SHOW_TEXT_OVERHEAL");
+			      		VUHDO_lnfSetTooltip(self, VUHDO_I18N_TT_217);
+			      	</OnLoad>
+      			</Scripts>
+          </CheckButton>
+
+          <CheckButton name="$parentOverhealCheckButton" text="VUHDO_I18N_SHOW_OVERHEAL" inherits="VuhDoCheckButtonTemplate">
+            <Anchors>
+              <Anchor point="TOPLEFT">
+                <Offset>
+                  <AbsDimension x="133" y="-69" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+			      <Scripts>
+			      	<OnLoad>
+			      		VUHDO_lnfSetModel(self, "VUHDO_CONFIG.SHOW_OVERHEAL");
+			      		VUHDO_lnfSetTooltip(self, VUHDO_I18N_TT_062);
+			      	</OnLoad>
+      			</Scripts>
+          </CheckButton>
+
+          <Frame name="$parentTitleLabel" inherits="VuhDoLabelFrameTemplate">
+            <Size>
+              <AbsDimension x="100" y="18" />
+            </Size>
+            <Anchors>
+              <Anchor point="TOPLEFT">
+                <Offset>
+                  <AbsDimension x="13" y="-7" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+            <Layers>
+              <Layer>
+                <FontString name="$parentLabel" text="VUHDO_I18N_SHOW_INC" inherits="VuDoDefaultTitleFontTemplate">
+                </FontString>
+              </Layer>
+            </Layers>
+          </Frame>
+        </Frames>
+      </Frame>
+
+      <Frame name="$parentTypeCastedPanel" inherits="VuhDoPanelTemplate">
+        <Size>
+          <AbsDimension x="244" y="95" />
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="20" y="-180" />
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Frames>
+
+          <Frame name="$parentEventHorizonSlider" inherits="VuhDoHSliderTemplate">
+            <Size>
+              <AbsDimension x="215" y="32" />
+            </Size>
+            <Anchors>
+              <Anchor point="TOPLEFT">
+                <Offset>
+                  <AbsDimension x="13" y="-55" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+			      <Scripts>
+			      	<OnLoad>
+			      		VUHDO_lnfSetModel(self, "VUHDO_CONFIG.INC_CASTED_SECS");
+						    VUHDO_lnfSliderOnLoad(self, VUHDO_I18N_EVENT_HORIZON, 0.1, 3.5, " " .. VUHDO_I18N_SECS, 0.1);
+			      		VUHDO_lnfSetTooltip(self, VUHDO_I18N_TT_368);
+			      	</OnLoad>
+      			</Scripts>
+          </Frame>
+
+          <CheckButton name="$parentEnableCheckButton" text="VUHDO_I18N_ENABLE" inherits="VuhDoCheckButtonTemplate">
+            <Anchors>
+              <Anchor point="TOPLEFT">
+                <Offset>
+                  <AbsDimension x="134" y="-13" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+			      <Scripts>
+			      	<OnLoad>
+			      		VUHDO_lnfSetModel(self, "VUHDO_CONFIG.SHOW_INC_CASTED");
+			      		VUHDO_lnfSetTooltip(self, VUHDO_I18N_TT_369);
+			      	</OnLoad>
+      			</Scripts>
+          </CheckButton>
+
+          <Frame name="$parentTitleLabel" inherits="VuhDoLabelFrameTemplate">
+            <Size>
+              <AbsDimension x="100" y="18" />
+            </Size>
+            <Anchors>
+              <Anchor point="TOPLEFT">
+                <Offset>
+                  <AbsDimension x="13" y="-7" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+            <Layers>
+              <Layer>
+                <FontString name="$parentLabel" text="VUHDO_I18N_CASTED" inherits="VuDoDefaultTitleFontTemplate">
+                </FontString>
+              </Layer>
+            </Layers>
+          </Frame>
+        </Frames>
+      </Frame>
+
+      <Frame name="$parentTypeChannelledPanel" inherits="VuhDoPanelTemplate">
+        <Size>
+          <AbsDimension x="244" y="95" />
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="274" y="-180" />
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Frames>
+
+          <Frame name="$parentEventHorizonSlider" inherits="VuhDoHSliderTemplate">
+            <Size>
+              <AbsDimension x="215" y="32" />
+            </Size>
+            <Anchors>
+              <Anchor point="TOPLEFT">
+                <Offset>
+                  <AbsDimension x="13" y="-55" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+			      <Scripts>
+			      	<OnLoad>
+			      		VUHDO_lnfSetModel(self, "VUHDO_CONFIG.INC_CHANNELLED_SECS");
+						    VUHDO_lnfSliderOnLoad(self, VUHDO_I18N_EVENT_HORIZON, 0.2, 15, " " .. VUHDO_I18N_SECS, 0.2);
+			      		VUHDO_lnfSetTooltip(self, VUHDO_I18N_TT_370);
+			      	</OnLoad>
+      			</Scripts>
+          </Frame>
+
+          <CheckButton name="$parentEnableCheckButton" text="VUHDO_I18N_ENABLE" inherits="VuhDoCheckButtonTemplate">
+            <Anchors>
+              <Anchor point="TOPLEFT">
+                <Offset>
+                  <AbsDimension x="134" y="-13" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+			      <Scripts>
+			      	<OnLoad>
+			      		VUHDO_lnfSetModel(self, "VUHDO_CONFIG.SHOW_INC_CHANNELLED");
+			      		VUHDO_lnfSetTooltip(self, VUHDO_I18N_TT_371);
+			      	</OnLoad>
+      			</Scripts>
+          </CheckButton>
+
+          <Frame name="$parentTitleLabel" inherits="VuhDoLabelFrameTemplate">
+            <Size>
+              <AbsDimension x="100" y="18" />
+            </Size>
+            <Anchors>
+              <Anchor point="TOPLEFT">
+                <Offset>
+                  <AbsDimension x="13" y="-7" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+            <Layers>
+              <Layer>
+                <FontString name="$parentLabel" text="VUHDO_I18N_CHANNELLED" inherits="VuDoDefaultTitleFontTemplate">
+                </FontString>
+              </Layer>
+            </Layers>
+          </Frame>
+        </Frames>
+      </Frame>
+
+      <Frame name="$parentTypeHoTsPanel" inherits="VuhDoPanelTemplate">
+        <Size>
+          <AbsDimension x="244" y="95" />
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="20" y="-285" />
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Frames>
+
+          <Frame name="$parentEventHorizonSlider" inherits="VuhDoHSliderTemplate">
+            <Size>
+              <AbsDimension x="215" y="32" />
+            </Size>
+            <Anchors>
+              <Anchor point="TOPLEFT">
+                <Offset>
+                  <AbsDimension x="13" y="-55" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+			      <Scripts>
+			      	<OnLoad>
+			      		VUHDO_lnfSetModel(self, "VUHDO_CONFIG.INC_HOTS_SECS");
+						    VUHDO_lnfSliderOnLoad(self, VUHDO_I18N_EVENT_HORIZON, 0.2, 15, " " .. VUHDO_I18N_SECS, 0.2);
+			      		VUHDO_lnfSetTooltip(self, VUHDO_I18N_TT_372);
+			      	</OnLoad>
+      			</Scripts>
+          </Frame>
+
+          <CheckButton name="$parentEnableCheckButton" text="VUHDO_I18N_ENABLE" inherits="VuhDoCheckButtonTemplate">
+            <Anchors>
+              <Anchor point="TOPLEFT">
+                <Offset>
+                  <AbsDimension x="134" y="-13" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+			      <Scripts>
+			      	<OnLoad>
+			      		VUHDO_lnfSetModel(self, "VUHDO_CONFIG.SHOW_INC_HOTS");
+			      		VUHDO_lnfSetTooltip(self, VUHDO_I18N_TT_373);
+			      	</OnLoad>
+      			</Scripts>
+          </CheckButton>
+
+          <Frame name="$parentTitleLabel" inherits="VuhDoLabelFrameTemplate">
+            <Size>
+              <AbsDimension x="100" y="18" />
+            </Size>
+            <Anchors>
+              <Anchor point="TOPLEFT">
+                <Offset>
+                  <AbsDimension x="13" y="-7" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+            <Layers>
+              <Layer>
+                <FontString name="$parentLabel" text="VUHDO_I18N_HOTS" inherits="VuDoDefaultTitleFontTemplate">
+                </FontString>
+              </Layer>
+            </Layers>
+          </Frame>
+        </Frames>
+      </Frame>
+
+      <Frame name="$parentTypeBombedPanel" inherits="VuhDoPanelTemplate">
+        <Size>
+          <AbsDimension x="244" y="95" />
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="274" y="-285" />
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Frames>
+
+          <Frame name="$parentEventHorizonSlider" inherits="VuhDoHSliderTemplate">
+            <Size>
+              <AbsDimension x="215" y="32" />
+            </Size>
+            <Anchors>
+              <Anchor point="TOPLEFT">
+                <Offset>
+                  <AbsDimension x="13" y="-55" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+			      <Scripts>
+			      	<OnLoad>
+			      		VUHDO_lnfSetModel(self, "VUHDO_CONFIG.INC_BOMBED_SECS");
+						    VUHDO_lnfSliderOnLoad(self, VUHDO_I18N_EVENT_HORIZON, 0.2, 15, VUHDO_I18N_SECS, 0.2);
+			      		VUHDO_lnfSetTooltip(self, VUHDO_I18N_TT_374);
+			      	</OnLoad>
+      			</Scripts>
+          </Frame>
+
+          <CheckButton name="$parentEnableCheckButton" text="VUHDO_I18N_ENABLE" inherits="VuhDoCheckButtonTemplate">
+            <Anchors>
+              <Anchor point="TOPLEFT">
+                <Offset>
+                  <AbsDimension x="134" y="-13" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+			      <Scripts>
+			      	<OnLoad>
+			      		VUHDO_lnfSetModel(self, "VUHDO_CONFIG.SHOW_INC_BOMBED");
+			      		VUHDO_lnfSetTooltip(self, VUHDO_I18N_TT_375);
+			      	</OnLoad>
+      			</Scripts>
+          </CheckButton>
+
+          <Frame name="$parentTitleLabel" inherits="VuhDoLabelFrameTemplate">
+            <Size>
+              <AbsDimension x="100" y="18" />
+            </Size>
+            <Anchors>
+              <Anchor point="TOPLEFT">
+                <Offset>
+                  <AbsDimension x="13" y="-7" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+            <Layers>
+              <Layer>
+                <FontString name="$parentLabel" text="VUHDO_I18N_BOMBED" inherits="VuDoDefaultTitleFontTemplate">
+                </FontString>
+              </Layer>
+            </Layers>
+          </Frame>
+        </Frames>
+      </Frame>
+	    <Scripts>
+    	  <OnHide>VUHDO_setLhcEnabled()</OnHide>
+    	</Scripts>
+    </Frames>
+  </Frame>
+</Ui>
