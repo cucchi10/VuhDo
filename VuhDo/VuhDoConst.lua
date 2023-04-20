@@ -121,6 +121,32 @@ VUHDO_ID_TYPE_MEMBERS = {
 	},
 };
 
+VUHDO_ID_MEMBER_TYPES = {
+	[VUHDO_ID_UNDEFINED] = VUHDO_ID_TYPE_UNDEFINED,
+
+	[VUHDO_ID_GROUP_1] = VUHDO_ID_TYPE_GROUP,
+	[VUHDO_ID_GROUP_2] = VUHDO_ID_TYPE_GROUP,
+	[VUHDO_ID_GROUP_3] = VUHDO_ID_TYPE_GROUP,
+	[VUHDO_ID_GROUP_4] = VUHDO_ID_TYPE_GROUP,
+	[VUHDO_ID_GROUP_5] = VUHDO_ID_TYPE_GROUP,
+	[VUHDO_ID_GROUP_6] = VUHDO_ID_TYPE_GROUP,
+	[VUHDO_ID_GROUP_7] = VUHDO_ID_TYPE_GROUP,
+	[VUHDO_ID_GROUP_8] = VUHDO_ID_TYPE_GROUP,
+	[VUHDO_ID_GROUP_OWN] = VUHDO_ID_TYPE_GROUP,
+
+	[VUHDO_ID_WARRIORS] = VUHDO_ID_TYPE_CLASS,
+	[VUHDO_ID_ROGUES] = VUHDO_ID_TYPE_CLASS,
+	[VUHDO_ID_HUNTERS] = VUHDO_ID_TYPE_CLASS,
+	[VUHDO_ID_PALADINS] = VUHDO_ID_TYPE_CLASS,
+	[VUHDO_ID_MAGES] = VUHDO_ID_TYPE_CLASS,
+	[VUHDO_ID_WARLOCKS] = VUHDO_ID_TYPE_CLASS,
+	[VUHDO_ID_SHAMANS] = VUHDO_ID_TYPE_CLASS,
+	[VUHDO_ID_DRUIDS] = VUHDO_ID_TYPE_CLASS,
+	[VUHDO_ID_PRIESTS] = VUHDO_ID_TYPE_CLASS,
+	[VUHDO_ID_DEATH_KNIGHT] = VUHDO_ID_TYPE_CLASS,
+};
+
+
 
 -- Flags for panel ordering type
 VUHDO_ORDERING_STRICT = 0;
@@ -207,7 +233,7 @@ VUHDO_UPDATE_TARGET = 8;
 VUHDO_UPDATE_INC = 9;
 VUHDO_UPDATE_ALIVE = 10;
 VUHDO_UPDATE_EMERGENCY = 11;
--- nur für bouquets
+-- nur fï¿½r bouquets
 VUHDO_UPDATE_MANA = 13;
 VUHDO_UPDATE_THREAT_PERC = 14;
 VUHDO_UPDATE_MOUSEOVER = 15;
@@ -299,3 +325,115 @@ VUHDO_EXCLUSIVE_HOTS = {
 VUHDO_MIN_MAX_CONSTRAINTS = 1;
 VUHDO_ENUMERATOR_CONSTRAINTS = 2;
 VUHDO_BOOLEAN_CONSTRAINTS = 3;
+
+
+
+VUHDO_PET_2_OWNER = {
+	["pet"] = "player",
+
+	["partypet1"] = "party1",
+	["partypet2"] = "party2",
+	["partypet3"] = "party3",
+	["partypet4"] = "party4",
+	["partypet5"] = "party5",
+
+	["raidpet1"] = "raid1",
+	["raidpet2"] = "raid2",
+	["raidpet3"] = "raid3",
+	["raidpet4"] = "raid4",
+	["raidpet5"] = "raid5",
+	["raidpet6"] = "raid6",
+	["raidpet7"] = "raid7",
+	["raidpet8"] = "raid8",
+	["raidpet9"] = "raid9",
+	["raidpet10"] = "raid10",
+
+	["raidpet11"] = "raid11",
+	["raidpet12"] = "raid12",
+	["raidpet13"] = "raid13",
+	["raidpet14"] = "raid14",
+	["raidpet15"] = "raid15",
+	["raidpet16"] = "raid16",
+	["raidpet17"] = "raid17",
+	["raidpet18"] = "raid18",
+	["raidpet19"] = "raid19",
+	["raidpet20"] = "raid20",
+
+	["raidpet21"] = "raid21",
+	["raidpet22"] = "raid22",
+	["raidpet23"] = "raid23",
+	["raidpet24"] = "raid24",
+	["raidpet25"] = "raid25",
+	["raidpet26"] = "raid26",
+	["raidpet27"] = "raid27",
+	["raidpet28"] = "raid28",
+	["raidpet29"] = "raid29",
+	["raidpet30"] = "raid30",
+
+	["raidpet31"] = "raid31",
+	["raidpet32"] = "raid32",
+	["raidpet33"] = "raid33",
+	["raidpet34"] = "raid34",
+	["raidpet35"] = "raid35",
+	["raidpet36"] = "raid36",
+	["raidpet37"] = "raid37",
+	["raidpet38"] = "raid38",
+	["raidpet39"] = "raid39",
+	["raidpet40"] = "raid40",
+};
+
+
+
+VUHDO_OWNER_2_PET = {
+	["player"] = "pet",
+
+	["party1"] = "partypet1",
+	["party2"] = "partypet2",
+	["party3"] = "partypet3",
+	["party4"] = "partypet4",
+	["party5"] = "partypet5",
+
+	["raid1"] = "raidpet1",
+	["raid2"] = "raidpet2",
+	["raid3"] = "raidpet3",
+	["raid4"] = "raidpet4",
+	["raid5"] = "raidpet5",
+	["raid6"] = "raidpet6",
+	["raid7"] = "raidpet7",
+	["raid8"] = "raidpet8",
+	["raid9"] = "raidpet9",
+	["raid10"] = "raidpet10",
+
+	["raid11"] = "raidpet11",
+	["raid12"] = "raidpet12",
+	["raid13"] = "raidpet13",
+	["raid14"] = "raidpet14",
+	["raid15"] = "raidpet15",
+	["raid16"] = "raidpet16",
+	["raid17"] = "raidpet17",
+	["raid18"] = "raidpet18",
+	["raid19"] = "raidpet19",
+	["raid20"] = "raidpet20",
+
+	["raid21"] = "raidpet21",
+	["raid22"] = "raidpet22",
+	["raid23"] = "raidpet23",
+	["raid24"] = "raidpet24",
+	["raid25"] = "raidpet25",
+	["raid26"] = "raidpet26",
+	["raid27"] = "raidpet27",
+	["raid28"] = "raidpet28",
+	["raid29"] = "raidpet29",
+	["raid30"] = "raidpet30",
+
+	["raid31"] = "raidpet31",
+	["raid32"] = "raidpet32",
+	["raid33"] = "raidpet33",
+	["raid34"] = "raidpet34",
+	["raid35"] = "raidpet35",
+	["raid36"] = "raidpet36",
+	["raid37"] = "raidpet37",
+	["raid38"] = "raidpet38",
+	["raid39"] = "raidpet39",
+	["raid40"] = "raidpet40",
+};

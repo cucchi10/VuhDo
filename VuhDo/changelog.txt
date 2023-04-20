@@ -1,3 +1,22 @@
+since Version 2.23 (to 2.24):
+
+Bugfixes:
+-- Fixed temporary frame duplication bug when a player leaves
+combat in a raid
+-- Fixed debuff definition optimizations
+-- Fixed pet identification optimization for owners
+
+Improvements:
+-- Improved performance when defining debuffs
+-- Improved pet identification algorithm
+
+Changes:
+
+
+Features:
+
+
+--------------------------------------------------------------
 since Version 2.22 (to 2.23):
 
 Bugfixes:

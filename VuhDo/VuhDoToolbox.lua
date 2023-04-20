@@ -76,6 +76,7 @@ end
 
 
 ----------------------------------------------------
+local VUHDO_ID_MEMBER_TYPES;
 local VUHDO_RAID_NAMES;
 local VUHDO_RAID;
 local VUHDO_UNIT_BUTTONS;
@@ -89,6 +90,7 @@ local sScanRange;
 --
 local VUHDO_updateBouquetsForEvent;
 function VUHDO_toolboxInitBurst()
+  VUHDO_ID_MEMBER_TYPES = VUHDO_GLOBAL["VUHDO_ID_MEMBER_TYPES"];
 	VUHDO_RAID_NAMES = VUHDO_GLOBAL["VUHDO_RAID_NAMES"];
 	VUHDO_RAID = VUHDO_GLOBAL["VUHDO_RAID"];
 	VUHDO_UNIT_BUTTONS = VUHDO_GLOBAL["VUHDO_UNIT_BUTTONS"];
@@ -191,19 +193,23 @@ end
 
 
 
+-- -- Returns the type of a given model id
+-- function VUHDO_getModelType(aModelId)
+-- 	if ((aModelId >= 1 and aModelId <= 8) or aModelId == 10) then -- VUHDO_ID_GROUP_1 -- VUHDO_ID_GROUP_8 -- VUHDO_ID_GROUP_OWN
+-- 		return 2; -- VUHDO_ID_TYPE_GROUP
+-- 	elseif (aModelId >= 20 and aModelId <= 29) then -- VUHDO_ID_WARRIORS -- VUHDO_ID_DEATH_KNIGHT
+-- 		return 1; -- VUHDO_ID_TYPE_CLASS
+-- 	elseif (aModelId == 0) then -- VUHDO_ID_UNDEFINED
+-- 	  return 0; -- VUHDO_ID_TYPE_UNDEFINED
+-- 	else
+-- 		return 3; -- VUHDO_ID_TYPE_SPECIAL
+-- 	end
+-- end
+
 -- Returns the type of a given model id
 function VUHDO_getModelType(aModelId)
-	if ((aModelId >= 1 and aModelId <= 8) or aModelId == 10) then -- VUHDO_ID_GROUP_1 -- VUHDO_ID_GROUP_8 -- VUHDO_ID_GROUP_OWN
-		return 2; -- VUHDO_ID_TYPE_GROUP
-	elseif (aModelId >= 20 and aModelId <= 29) then -- VUHDO_ID_WARRIORS -- VUHDO_ID_DEATH_KNIGHT
-		return 1; -- VUHDO_ID_TYPE_CLASS
-	elseif (aModelId == 0) then -- VUHDO_ID_UNDEFINED
-	  return 0; -- VUHDO_ID_TYPE_UNDEFINED
-	else
-		return 3; -- VUHDO_ID_TYPE_SPECIAL
-	end
+	return VUHDO_ID_MEMBER_TYPES[aModelId] or 3; -- VUHDO_ID_TYPE_SPECIAL
 end
-
 
 
 -- returns unit-prefix, pet-prefix and maximum number of players in a party

@@ -1171,7 +1171,7 @@ function VUHDO_updateBuffPanel()
 
 	for tUnit, tInfo in pairs(VUHDO_RAID) do
 		if (VUHDO_OLD_MISS_BUFFS[tUnit] ~= tInfo["missbuff"]) then
-			tInfo["debuff"], tInfo["debuffName"] = VUHDO_determineDebuff(tUnit, tInfo["class"]);
+			tInfo["debuff"], tInfo["debuffName"] = VUHDO_determineDebuff(tUnit);
 			VUHDO_updateHealthBarsFor(tUnit, VUHDO_UPDATE_DEBUFF);
 		end
 	end

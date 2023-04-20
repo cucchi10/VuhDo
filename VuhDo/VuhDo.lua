@@ -55,6 +55,9 @@ VUHDO_PLAYER_GROUP = nil;
 VUHDO_GLOBAL = getfenv();
 
 -- BURST CACHE ---------------------------------------------------
+local VUHDO_PET_2_OWNER;
+local VUHDO_OWNER_2_PET;
+
 local VUHDO_getUnitIds;
 local VUHDO_getUnitNo;
 local VUHDO_isInRange;
@@ -114,6 +117,8 @@ local _ = _;
 function VUHDO_vuhdoInitBurst()
 	VUHDO_CONFIG = VUHDO_GLOBAL["VUHDO_CONFIG"];
 	VUHDO_RAID = VUHDO_GLOBAL["VUHDO_RAID"];
+  VUHDO_PET_2_OWNER = VUHDO_GLOBAL["VUHDO_PET_2_OWNER"];
+	VUHDO_OWNER_2_PET = VUHDO_GLOBAL["VUHDO_OWNER_2_PET"];
 	VUHDO_getUnitIds = VUHDO_GLOBAL["VUHDO_getUnitIds"];
 	VUHDO_getUnitNo = VUHDO_GLOBAL["VUHDO_getUnitNo"];
 	VUHDO_isInRange = VUHDO_GLOBAL["VUHDO_isInRange"];
@@ -307,13 +312,14 @@ function VUHDO_setHealth(aUnit, aMode)
 
 	if (4 == aMode) then -- VUHDO_UPDATE_DEBUFF
 		if (tInfo ~= nil) then
-			tInfo["debuff"], tInfo["debuffName"] = VUHDO_determineDebuff(aUnit, tInfo["class"]);
+			tInfo["debuff"], tInfo["debuffName"] = VUHDO_determineDebuff(aUnit);
 		end
 		return;
 	end
 
 	tUnitId, _ = VUHDO_getUnitIds();
-	tIsPet = strfind(aUnit, "pet", 1, true) ~= nil;
+	tOwner = VUHDO_PET_2_OWNER[aUnit];
+	tIsPet = tOwner ~= nil;
 
 	if (strfind(aUnit, tUnitId, 1, true) ~= nil
 			or tIsPet
@@ -336,7 +342,7 @@ function VUHDO_setHealth(aUnit, aMode)
 				VUHDO_RAID[aUnit] = { };
 			end
 			tInfo = VUHDO_RAID[aUnit];
-			tInfo["ownerUnit"] = VUHDO_getOwner(aUnit, tIsPet);
+			tInfo["ownerUnit"] = tOwner;
 
 			if (tIsPet and tClassId ~= nil) then
 				if (VUHDO_USER_CLASS_COLORS["petClassColor"] and VUHDO_RAID[tInfo["ownerUnit"]] ~= nil) then
@@ -356,7 +362,7 @@ function VUHDO_setHealth(aUnit, aMode)
 			tInfo["unit"] = aUnit;
 			tInfo["class"] = tClassName;
 			tInfo["range"] = VUHDO_isInRange(aUnit);
-			tInfo["debuff"], tInfo["debuffName"] = VUHDO_determineDebuff(aUnit, tClassName);
+			tInfo["debuff"], tInfo["debuffName"] = VUHDO_determineDebuff(aUnit);
 			tInfo["isPet"] = tIsPet;
 			tInfo["powertype"] = tonumber(tPowerType);
 			tInfo["power"] = UnitMana(aUnit);
@@ -371,17 +377,12 @@ function VUHDO_setHealth(aUnit, aMode)
 			tInfo["threatPerc"] = 0;
 			tInfo["isVehicle"] = UnitHasVehicleUI(aUnit);
 			tInfo["className"] = tLocalClass or "";
-			tInfo["petUnit"] = VUHDO_getPetUnit(aUnit);
+			tInfo["petUnit"] = VUHDO_OWNER_2_PET[aUnit];
 			tInfo["targetUnit"] = VUHDO_getTargetUnit(aUnit);
 			tInfo["classId"] = tClassId;
 			tInfo["sortMaxHp"] = VUHDO_getUnitSortMaxHp(aUnit);
 			tInfo["role"] = VUHDO_determineRole(aUnit);
-
-			if (strlen(tRealm or "") > 0) then
-				tInfo["fullName"] = tName .. "-" .. tRealm;
-			else
-				tInfo["fullName"] = tName;
-			end
+      tInfo["fullName"] = (tRealm or "") ~= "" and (tName .. "-" .. tRealm) or tName;
 			tInfo["raidIcon"] = GetRaidTargetIndex(aUnit);
 			tInfo["visible"] = UnitIsVisible(aUnit); -- Reihenfolge beachten
 			tInfo["zone"], tInfo["map"] = VUHDO_getUnitZoneName(aUnit); -- ^^
@@ -966,13 +967,7 @@ function VUHDO_reloadRaidMembers()
 		VUHDO_DID_DC_RESTORE = true;
 		tUnit, tPetUnit = VUHDO_getUnitIds();
 
-		if ("raid" == tUnit) then
-			tMaxMembers = 40;
-		elseif ("party" == tUnit) then
-			tMaxMembers = 5;
-		else
-			tMaxMembers = 0;
-		end
+    tMaxMembers = ("raid" == tUnit) and GetNumRaidMembers() or ("party" == tUnit) and GetNumPartyMembers() or 0;
 
 		twipe(VUHDO_RAID);
 		twipe(VUHDO_RAID_NAMES);
@@ -989,7 +984,6 @@ function VUHDO_reloadRaidMembers()
 			end
 
 		end
-
 		VUHDO_setHealthSafe("player", 1); -- VUHDO_UPDATE_ALL
 		VUHDO_setHealthSafe("pet", 1); -- VUHDO_UPDATE_ALL
 		VUHDO_setHealthSafe("focus", 1); -- VUHDO_UPDATE_ALL
@@ -1040,13 +1034,7 @@ function VUHDO_refreshRaidMembers()
 		--VUHDO_DID_DC_RESTORE = true;
 		tUnit, tPetUnit = VUHDO_getUnitIds();
 
-		if ("raid" == tUnit) then
-			tMaxMembers = 40;
-		elseif ("party" == tUnit) then
-			tMaxMembers = 5;
-		else
-			tMaxMembers = 0;
-		end
+    tMaxMembers = ("raid" == tUnit) and 40 or ("party" == tUnit) and 5 or 0; --40 x GetNumRaidMembers()
 
 		twipe(VUHDO_RAID_NAMES); -- f�r VUHDO_SUSPICIOUS_RAID_ROSTER
 
@@ -1065,7 +1053,7 @@ function VUHDO_refreshRaidMembers()
 			if (UnitExists(tPlayer) and tPlayer ~= VUHDO_PLAYER_RAID_ID) then
 				tInfo = VUHDO_RAID[tPlayer];
 				if (tInfo == nil or VUHDO_RAID_GUIDS[UnitGUID(tPlayer)] ~= tPlayer) then
-					VUHDO_setHealth(tPlayer, VUHDO_UPDATE_ALL);
+					VUHDO_setHealth(tPlayer, 1);--VUHDO_UPDATE_ALL
 				else
 					tInfo["group"] = VUHDO_getUnitGroup(tPlayer, false);
 					tInfo["isVehicle"] = UnitHasVehicleUI(tPlayer);
@@ -1092,9 +1080,17 @@ function VUHDO_refreshRaidMembers()
 
 				tPet = tPetUnit .. i;
 				VUHDO_setHealthSafe(tPet, 1); -- VUHDO_UPDATE_ALL
-			end
-			
+        
+      elseif (VUHDO_RAID[tPlayer] ~= nil) then
+        VUHDO_RAID[tPlayer]["connected"] = false;
+        tPet = VUHDO_RAID[tPlayer]["petUnit"];
+        if (VUHDO_RAID[tPet] ~= nil) then
+          VUHDO_RAID[tPet]["connected"] = false;
+        end
+        return
+      end
 			VUHDO_TIMERS["MIRROR_TO_MACRO"] = 8;
+
 		end
 
 		VUHDO_setHealthSafe("player", 1); -- VUHDO_UPDATE_ALL
