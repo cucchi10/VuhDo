@@ -57,7 +57,7 @@ VUHDO_GLOBAL = getfenv();
 -- BURST CACHE ---------------------------------------------------
 local VUHDO_PET_2_OWNER;
 local VUHDO_OWNER_2_PET;
-
+local VUHDO_CurrentMode;
 local VUHDO_getUnitIds;
 local VUHDO_getUnitNo;
 local VUHDO_isInRange;
@@ -139,6 +139,7 @@ function VUHDO_vuhdoInitBurst()
 	VUHDO_updateBouquetsForEvent = VUHDO_GLOBAL["VUHDO_updateBouquetsForEvent"];
 	VUHDO_resetClusterCoordDeltas = VUHDO_GLOBAL["VUHDO_resetClusterCoordDeltas"];
 	VUHDO_getUnitZoneName = VUHDO_GLOBAL["VUHDO_getUnitZoneName"];
+  VUHDO_CurrentMode = VUHDO_CONFIG["MODE"]
 
 	VUHDO_INTERNAL_TOGGLES = VUHDO_GLOBAL["VUHDO_INTERNAL_TOGGLES"];
 end
@@ -235,7 +236,7 @@ local function VUHDO_sortEmergencies()
 		end
 	end
 
-	tsort(VUHDO_RAID_SORTED, VUHDO_EMERGENCY_SORTERS[VUHDO_CONFIG["MODE"]]);
+	tsort(VUHDO_RAID_SORTED, VUHDO_EMERGENCY_SORTERS[VUHDO_CurrentMode]);
 	VUHDO_setTopEmergencies(VUHDO_CONFIG["MAX_EMERGENCIES"]);
 end
 
@@ -458,19 +459,19 @@ function VUHDO_updateHealth(aUnit, aMode)
 	tIsPet = VUHDO_RAID[aUnit]["isPet"];
 
 	if (not tIsPet or VUHDO_INTERNAL_TOGGLES[26]) then -- VUHDO_UPDATE_PETS  -- Enth�lt nur Pets als eigene Balken, vehicles werden �ber owner dargestellt s.unten
-		VUHDO_setHealth(aUnit, aMode);
+		VUHDO_setHealthSafe(aUnit, aMode);
 		VUHDO_updateHealthBarsFor(aUnit, aMode);
 	end
 
 	if (tIsPet) then -- Vehikel?
 		tOwner = VUHDO_RAID[aUnit]["ownerUnit"];
 		if (tOwner ~= nil and VUHDO_RAID[tOwner]["isVehicle"]) then
-			VUHDO_setHealth(tOwner, aMode);
+			VUHDO_setHealthSafe(tOwner, aMode);
 			VUHDO_updateHealthBarsFor(tOwner, aMode);
 		end
 	end
 
-	if (1 ~= VUHDO_CONFIG["MODE"] -- VUHDO_MODE_NEUTRAL
+	if (1 ~= VUHDO_CurrentMode -- VUHDO_MODE_NEUTRAL
 		and (2 == aMode or 3 == aMode)) then -- VUHDO_UPDATE_HEALTH -- VUHDO_UPDATE_HEALTH_MAX
 		-- Remove old emergencies
 		VUHDO_FORCE_RESET = true;
@@ -976,7 +977,7 @@ function VUHDO_reloadRaidMembers()
 			for i = 1, tMaxMembers do
 				tPlayer = tUnit .. i;
 				if (UnitExists(tPlayer) and tPlayer ~= VUHDO_PLAYER_RAID_ID) then
-					VUHDO_setHealth(tPlayer, 1); -- VUHDO_UPDATE_ALL
+					VUHDO_setHealthSafe(tPlayer, 1); -- VUHDO_UPDATE_ALL
 
 					tPet = tPetUnit .. i;
 					VUHDO_setHealthSafe(tPet, 1); -- VUHDO_UPDATE_ALL
@@ -1004,7 +1005,9 @@ function VUHDO_reloadRaidMembers()
 	VUHDO_updateAllGuids();
 	VUHDO_updateBuffRaidGroup();
 	VUHDO_updateBuffPanel();
-	VUHDO_sortEmergencies();
+	if (VUHDO_CurrentMode ~= 1) then -- VUHDO_MODE_NEUTRAL
+		VUHDO_sortEmergencies();
+	end
 	VUHDO_createIndexedUnits();
 
 	if (VUHDO_IS_SUSPICIOUS_ROSTER) then
@@ -1017,11 +1020,14 @@ end
 --
 local i;
 local tPlayer, tPet;
+local tPlayerVRG;
 local tMaxMembers;
 local tUnit, tPetUnit;
 local tInfo;
 local tIsDcChange;
 local tName, tRealm;
+local tNameVRG, tNamePlayer;
+local tRaidId;
 function VUHDO_refreshRaidMembers()
 	VUHDO_IS_SUSPICIOUS_ROSTER = false;
 
@@ -1031,66 +1037,69 @@ function VUHDO_refreshRaidMembers()
 	else
 		VUHDO_PLAYER_RAID_ID = VUHDO_getPlayerRaidUnit();
 		VUHDO_IN_COMBAT_RELOG = false;
-		--VUHDO_DID_DC_RESTORE = true;
 		tUnit, tPetUnit = VUHDO_getUnitIds();
 
-    tMaxMembers = ("raid" == tUnit) and 40 or ("party" == tUnit) and 5 or 0; --40 x GetNumRaidMembers()
+    tMaxMembers = ("raid" == tUnit) and 40 or ("party" == tUnit) and 5 or 0;
 
-		twipe(VUHDO_RAID_NAMES); -- f�r VUHDO_SUSPICIOUS_RAID_ROSTER
+		twipe(VUHDO_RAID_NAMES);
 
-    if (not InCombatLockdown()) then -- Im combat lockdown heben wir uns verwaiste unit-ids auf um nachr�ckende Spieler darstellen zu k�nnen
-  		for tPlayer, _ in pairs(VUHDO_RAID) do
-  			if (not UnitExists(tPlayer)
-  			  or tPlayer == VUHDO_PLAYER_RAID_ID -- bei raid roster wechsel kann unsere raid id vorher wem anders geh�rt haben
-  				or (not strfind(tPlayer, tUnit, 1, true) and not strfind(tPlayer, tPetUnit, 1, true))) then -- Falls Gruppe<->Raid
-  				VUHDO_RAID[tPlayer] = nil;
-  			end
-  		end
-  	end
+    tNamePlayer, _ = UnitName(VUHDO_PLAYER_RAID_ID);
 
 		for i = 1, tMaxMembers do
 			tPlayer = tUnit .. i;
-			if (UnitExists(tPlayer) and tPlayer ~= VUHDO_PLAYER_RAID_ID) then
-				tInfo = VUHDO_RAID[tPlayer];
-				if (tInfo == nil or VUHDO_RAID_GUIDS[UnitGUID(tPlayer)] ~= tPlayer) then
-					VUHDO_setHealth(tPlayer, 1);--VUHDO_UPDATE_ALL
-				else
-					tInfo["group"] = VUHDO_getUnitGroup(tPlayer, false);
-					tInfo["isVehicle"] = UnitHasVehicleUI(tPlayer);
-					tInfo["role"] = VUHDO_determineRole(tPlayer); -- weil talent-scanner nach und nach arbeitet
-    			tInfo["afk"], tInfo["connected"], tIsDcChange = VUHDO_updateAfkDc(tPlayer);
-					tInfo["range"] = VUHDO_isInRange(tPlayer);
+      tInfo = VUHDO_RAID[tPlayer];
+      if (UnitExists(tPlayer)) then
+        tName, tRealm = UnitName(tPlayer);
+        if(tName and tName == tNamePlayer) then
+          VUHDO_RAID[tPlayer] = nil;
+        elseif (tName and tName ~= tNamePlayer) then
+          tPlayerVRG = VUHDO_RAID_GUIDS[UnitGUID(tPlayer)]
+          if(tPlayerVRG ~= nil) then
+            tNameVRG, _= UnitName(tPlayer);
+            if (tInfo == nil or tPlayerVRG ~= nil and tNameVRG ~= tNamePlayer) then
+              VUHDO_setHealthSafe(tPlayer, 1);--VUHDO_UPDATE_ALL
+            end
+          elseif (tInfo == nil ) then
+             VUHDO_setHealthSafe(tPlayer, 1);--VUHDO_UPDATE_ALL
+          else
+            tInfo["group"] = VUHDO_getUnitGroup(tPlayer, false);
+            tInfo["isVehicle"] = UnitHasVehicleUI(tPlayer);
 
-    			tName, tRealm = UnitName(tPlayer);
-					tInfo["name"] = tName;
-					if (strlen(tRealm or "") > 0) then
-						tInfo["fullName"] = tName .. "-" .. tRealm;
-					else
-						tInfo["fullName"] = tName;
-						if (VUHDO_RAID_NAMES[tName] ~= nil) then
-							VUHDO_IS_SUSPICIOUS_ROSTER = true;
-						end
-					end
-					VUHDO_RAID_NAMES[tName] = tPlayer;
+            if ( tInfo["isVehicle"] ) then
+              tRaidId = UnitInRaid(tPlayer);
+              
+              if ( tRaidId and not UnitTargetsVehicleInRaidUI(tPlayer) ) then
+                tInfo["isVehicle"] = false;
+              end
 
-    			if (tIsDcChange) then
-    				VUHDO_updateBouquetsForEvent(tPlayer, 19); -- VUHDO_UPDATE_DC
-    			end
-				end
+            end
+            tInfo["role"] = VUHDO_determineRole(tPlayer); -- weil talent-scanner nach und nach arbeitet
+            tInfo["afk"], tInfo["connected"], tIsDcChange = VUHDO_updateAfkDc(tPlayer);
+            tInfo["range"] = VUHDO_isInRange(tPlayer);
 
-				tPet = tPetUnit .. i;
-				VUHDO_setHealthSafe(tPet, 1); -- VUHDO_UPDATE_ALL
-        
-      elseif (VUHDO_RAID[tPlayer] ~= nil) then
-        VUHDO_RAID[tPlayer]["connected"] = false;
-        tPet = VUHDO_RAID[tPlayer]["petUnit"];
-        if (VUHDO_RAID[tPet] ~= nil) then
-          VUHDO_RAID[tPet]["connected"] = false;
+            tInfo["name"] = tName;
+
+            if (strlen(tRealm or "") > 0) then
+              tInfo["fullName"] = tName .. "-" .. tRealm;
+            else
+              tInfo["fullName"] = tName;
+
+              if (VUHDO_RAID_NAMES[tName] ~= nil) then
+                VUHDO_IS_SUSPICIOUS_ROSTER = true;
+              end
+
+            end
+            VUHDO_RAID_NAMES[tName] = tPlayer;
+
+            if (tIsDcChange) then
+              VUHDO_updateBouquetsForEvent(tPlayer, 19); -- VUHDO_UPDATE_DC
+            end
+          
+            tPet = tPetUnit .. i;
+            VUHDO_setHealthSafe(tPet, 1); -- VUHDO_UPDATE_ALL
+          end
         end
-        return
       end
-			VUHDO_TIMERS["MIRROR_TO_MACRO"] = 8;
-
 		end
 
 		VUHDO_setHealthSafe("player", 1); -- VUHDO_UPDATE_ALL
@@ -1099,8 +1108,9 @@ function VUHDO_refreshRaidMembers()
 		if (VUHDO_INTERNAL_TOGGLES[27]) then -- VUHDO_UPDATE_PLAYER_TARGET
 			VUHDO_setHealthSafe("target", 1); -- VUHDO_UPDATE_ALL
     end
-
+    VUHDO_TIMERS["MIRROR_TO_MACRO"] = 8;
 	end
+
 	VUHDO_PLAYER_GROUP = VUHDO_getUnitGroup(VUHDO_PLAYER_RAID_ID, false);
 
 	VUHDO_updateAllRaidNames();
@@ -1110,7 +1120,9 @@ function VUHDO_refreshRaidMembers()
 	VUHDO_updateAllPanelUnits();
 	VUHDO_updateAllGuids();
 	VUHDO_updateBuffRaidGroup();
-	VUHDO_sortEmergencies();
+	if (VUHDO_CurrentMode ~= 1) then -- VUHDO_MODE_NEUTRAL
+		VUHDO_sortEmergencies();
+	end
 	VUHDO_createIndexedUnits();
 
 	if (VUHDO_IS_SUSPICIOUS_ROSTER) then
