@@ -309,6 +309,13 @@ local tName, tRealm;
 local tIsDcChange;
 function VUHDO_setHealth(aUnit, aMode)
 
+  if (666 == aMode) then --DELETE
+    VUHDO_RAID[aUnit] = nil;
+    VUHDO_updateHealthBarsFor(aUnit, 1);
+    VUHDO_updateBouquetsForEvent(aUnit, 1);
+    return;
+  end
+
 	tInfo = VUHDO_RAID[aUnit];
 
 	if (4 == aMode) then -- VUHDO_UPDATE_DEBUFF
@@ -1051,7 +1058,8 @@ function VUHDO_refreshRaidMembers()
       if (UnitExists(tPlayer)) then
         tName, tRealm = UnitName(tPlayer);
         if(tName and tName == tNamePlayer) then
-          VUHDO_RAID[tPlayer] = nil;
+          VUHDO_setHealth(tPlayer, 666);--DELETE
+          --VUHDO_RAID[tPlayer] = nil;
         elseif (tName and tName ~= tNamePlayer) then
           tPlayerVRG = VUHDO_RAID_GUIDS[UnitGUID(tPlayer)]
           if(tPlayerVRG ~= nil) then
