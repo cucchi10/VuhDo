@@ -258,7 +258,7 @@ VUHDO_I18N_OWN_GROUP_LONG = "Свою группу";
 VUHDO_I18N_TRACK_BUFFS_FOR = "Слежение баффа для ...";
 
 VUHDO_I18N_NO_FOCUS = "[нет фокуса]";
-VUHDO_I18N_NOT_AVAILABLE = "[ N/A ]";
+VUHDO_I18N_NOT_AVAILABLE = "";--[ N/A ]
 VUHDO_I18N_SHIELD_ABSORPTION = "Статус щита";
 
 

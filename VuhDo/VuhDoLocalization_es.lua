@@ -3,18 +3,18 @@ if (GetLocale() ~= "esES") then
 	return;
 end
 
--- á = \195\161
--- é = \195\169
--- í = \195\173
--- ó = \195\179
--- ú = \195\186
--- ñ = \195\177
--- ê = \195\170
--- ï = \195\175
--- ô = \195\180
--- ù = \195\185
--- Œ = \197\146
--- œ = \197\147
+-- ï¿½ = \195\161
+-- ï¿½ = \195\169
+-- ï¿½ = \195\173
+-- ï¿½ = \195\179
+-- ï¿½ = \195\186
+-- ï¿½ = \195\177
+-- ï¿½ = \195\170
+-- ï¿½ = \195\175
+-- ï¿½ = \195\180
+-- ï¿½ = \195\185
+-- ï¿½ = \197\146
+-- ï¿½ = \197\147
 
 -- @EXACT = true: Translation has to be the exact(!) match in the clients language,
 --                beacause it carries technical semantics
@@ -24,7 +24,7 @@ end
 -- Class Names
 -- @EXACT = false
 VUHDO_I18N_WARRIORS="Guerreros"
-VUHDO_I18N_ROGUES = "Pícaros";
+VUHDO_I18N_ROGUES = "Pï¿½caros";
 VUHDO_I18N_HUNTERS = "Cazadores";
 VUHDO_I18N_PALADINS = "Paladines";
 VUHDO_I18N_MAGES = "Magos";
@@ -90,16 +90,16 @@ VUHDO_I18N_RANK = "Rango";
 -- Chat messages
 -- @EXACT = false
 VUHDO_I18N_COMMAND_LIST = "\n|cffffe566 - [ Commandes VuhDo] -|r";
-VUHDO_I18N_COMMAND_LIST = VUHDO_I18N_COMMAND_LIST .. "§|cffffe566opt|r[ions] - Opciones de VuhDo";
-VUHDO_I18N_COMMAND_LIST = VUHDO_I18N_COMMAND_LIST .. "§|cffffe566res|r[et] - Resetear la posicion del panel";
-VUHDO_I18N_COMMAND_LIST = VUHDO_I18N_COMMAND_LIST .. "§|cffffe566lock|r - Cambiar Panel Bloqueado";
-VUHDO_I18N_COMMAND_LIST = VUHDO_I18N_COMMAND_LIST .. "§|cffffe566mm, map, minimap|r - Activar Icono de minimapa";
-VUHDO_I18N_COMMAND_LIST = VUHDO_I18N_COMMAND_LIST .. "§|cffffe566show, hide, toggle|r - Girar paneles";
-VUHDO_I18N_COMMAND_LIST = VUHDO_I18N_COMMAND_LIST .. "§|cffffe566load|r - [Profile],[Key Layout]";
-VUHDO_I18N_COMMAND_LIST = VUHDO_I18N_COMMAND_LIST .. "§[broad]|cffffe566cast, mt|r[s] - Configurar tanques principales";
-VUHDO_I18N_COMMAND_LIST = VUHDO_I18N_COMMAND_LIST .. "§|cffffe566role|r - Restablecer rol de jugadores";
-VUHDO_I18N_COMMAND_LIST = VUHDO_I18N_COMMAND_LIST .. "§|cffffe566aegis x|r - Set Divine Aegis detection sensivity";
-VUHDO_I18N_COMMAND_LIST = VUHDO_I18N_COMMAND_LIST .. "§|cffffe566help,?|r - Lista de comandos\n";
+VUHDO_I18N_COMMAND_LIST = VUHDO_I18N_COMMAND_LIST .. "ï¿½|cffffe566opt|r[ions] - Opciones de VuhDo";
+VUHDO_I18N_COMMAND_LIST = VUHDO_I18N_COMMAND_LIST .. "ï¿½|cffffe566res|r[et] - Resetear la posicion del panel";
+VUHDO_I18N_COMMAND_LIST = VUHDO_I18N_COMMAND_LIST .. "ï¿½|cffffe566lock|r - Cambiar Panel Bloqueado";
+VUHDO_I18N_COMMAND_LIST = VUHDO_I18N_COMMAND_LIST .. "ï¿½|cffffe566mm, map, minimap|r - Activar Icono de minimapa";
+VUHDO_I18N_COMMAND_LIST = VUHDO_I18N_COMMAND_LIST .. "ï¿½|cffffe566show, hide, toggle|r - Girar paneles";
+VUHDO_I18N_COMMAND_LIST = VUHDO_I18N_COMMAND_LIST .. "ï¿½|cffffe566load|r - [Profile],[Key Layout]";
+VUHDO_I18N_COMMAND_LIST = VUHDO_I18N_COMMAND_LIST .. "ï¿½[broad]|cffffe566cast, mt|r[s] - Configurar tanques principales";
+VUHDO_I18N_COMMAND_LIST = VUHDO_I18N_COMMAND_LIST .. "ï¿½|cffffe566role|r - Restablecer rol de jugadores";
+VUHDO_I18N_COMMAND_LIST = VUHDO_I18N_COMMAND_LIST .. "ï¿½|cffffe566aegis x|r - Set Divine Aegis detection sensivity";
+VUHDO_I18N_COMMAND_LIST = VUHDO_I18N_COMMAND_LIST .. "ï¿½|cffffe566help,?|r - Lista de comandos\n";
 
 VUHDO_I18N_BAD_COMMAND = "Comando invalido! Teclea '/vuhdo help' or '/vd ?' para ver la lista de comandos.";
 VUHDO_I18N_CHAT_SHOWN = "|cffffe566visible|r.";
@@ -276,7 +276,7 @@ VUHDO_I18N_AUTO_ARRANG_2 = ". Auto-engaging arrangement: \"";
 VUHDO_I18N_TRACK_BUFFS_FOR = "Track buff for ...";
 VUHDO_I18N_OWN_GROUP_LONG = "Own Group";
 VUHDO_I18N_NO_FOCUS = "[no focus]";
-VUHDO_I18N_NOT_AVAILABLE = "[ N/A ]";
+VUHDO_I18N_NOT_AVAILABLE = "";
 VUHDO_I18N_SHIELD_ABSORPTION = "Shield Status";
 
 
