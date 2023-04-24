@@ -749,7 +749,7 @@ function VUHDO_updateHealthBarsFor(aUnit, anUpdateMode)
 
 	elseif (5 == anUpdateMode) then -- VUHDO_UPDATE_RANGE
 		for _, tButton in pairs(tAllButtons) do
-			VUHDO_customizeText(tButton, 7, false); -- für d/c tag -- VUHDO_UPDATE_AGGRO
+			VUHDO_customizeText(tButton, 7, false); -- fï¿½r d/c tag -- VUHDO_UPDATE_AGGRO
 			VUHDO_customizeDebuffIconsRange(tButton);
 		end
 

@@ -552,6 +552,22 @@ local tAllListeners;
 local tOwner, tDelegate;
 local tName;
 function VUHDO_updateBouquetsForEvent(aUnit, anEventType)
+
+  if (666 == anEventType) then --DELETE
+    for tName, _ in pairs(VUHDO_REGISTERED_BOUQUETS) do
+      if (VUHDO_isBouquetInterestedInEvent(tName, 1)) then
+        if (aUnit ~= nil) then -- focus / n/a
+          tAllListeners = VUHDO_REGISTERED_BOUQUETS[tName];
+          for tOwner, tDelegate in pairs(tAllListeners) do
+            tDelegate(aUnit, false, nil, nil, nil, nil, nil, nil, nil, nil);
+          end
+        end
+      end
+    end
+    return
+  end
+
+
 	tInfo = VUHDO_RAID[aUnit];
 
 	for tName, _ in pairs(VUHDO_REGISTERED_BOUQUETS) do
